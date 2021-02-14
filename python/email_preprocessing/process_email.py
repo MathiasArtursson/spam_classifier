@@ -51,18 +51,18 @@ def process(string_in):
     # Http addresses corrected
     # Replace occurrence of "http" or "https" + "://" + zero or all following (*) non-white-space characters [^\s]
     # to "httpaddr"
-    email_contents = re.sub('(http|https)://[^\\s]*', 'httpaddr', email_contents)
+    email_contents = re.sub('(http|https)://[^\\s]*', ' httpaddr ', email_contents)
 
     # Email addresses corrected
     # Replace occurrence of at least one (+) non-white-space character [^\s] + "@" +
     # at least one (+) non-white-space character [^\s], into "emailaddr"
-    email_contents = re.sub('[^\\s]+@[^\\s]+', 'emailaddr', email_contents)
+    email_contents = re.sub('[^\\s]+@[^\\s]+', ' emailaddr ', email_contents)
 
     # Dollar sign correction
-    email_contents = re.sub('[$]+', 'dollar', email_contents)
+    email_contents = re.sub('[$]+', ' dollar ', email_contents)
 
     # Number correction
-    email_contents = re.sub('[0-9]+', 'number', email_contents)
+    email_contents = re.sub('[0-9]+', ' number ', email_contents)
 
     # Replace symbols which are not a-z or non-white-space character \s with " "
     email_contents = re.sub('[^a-z\\s]', ' ', email_contents)
